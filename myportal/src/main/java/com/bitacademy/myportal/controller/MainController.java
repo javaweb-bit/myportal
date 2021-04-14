@@ -6,10 +6,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
-	@RequestMapping("/main")
+	@RequestMapping({"/", "/main"})
 	public ModelAndView home() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/WEB-INF/views/home.jsp");
+		mav.setViewName("home");
+		//	전달된 ViewName을 기반으로 ViewResolver에게 실제 뷰
+		//	위치를 질의
 		return mav;
 	}
 }
