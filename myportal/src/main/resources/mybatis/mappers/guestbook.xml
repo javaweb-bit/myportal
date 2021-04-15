@@ -30,4 +30,13 @@
 		
 	]]>	
 	</insert>
+	
+	<!-- 게시물 삭제 쿼리 -->
+	<delete id="delete"
+		parameterType="com.bitacademy.myportal.vo.GuestbookVo">
+	<![CDATA[
+	DELETE FROM guestbook
+	WHERE no = #{no} AND password = #{password}
+	]]>	
+	</delete>
 </mapper>

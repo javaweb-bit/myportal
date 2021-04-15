@@ -32,8 +32,8 @@ public class GuestbookDaoImpl implements GuestbookDao {
 
 	@Override
 	public int delete(GuestbookVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int deletedCount = sqlSession.delete("guestbook.delete", vo);
+		return deletedCount;
 	}
 
 }
