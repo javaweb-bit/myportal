@@ -14,4 +14,20 @@
 	ORDER BY regdate DESC
 	]]>	
 	</select>
+	
+	<!-- 방명록 추가 쿼리 -->
+	<!-- guestbook.insert로 호출,
+		파라미터로 GuestbookVo -->
+	<!-- insert, update, delete는 결과로 영향을 받은 레코드의 수가 반환
+		resultType은 명시하지 않는다 -->
+	<insert id="insert" 
+		parameterType="com.bitacademy.myportal.vo.GuestbookVo">
+	<![CDATA[
+	INSERT INTO guestbook (no, name, password, content)
+	VALUES(seq_guestbook_no.nextval,
+			#{name}, #{password}, #{content}
+	)
+		
+	]]>	
+	</insert>
 </mapper>

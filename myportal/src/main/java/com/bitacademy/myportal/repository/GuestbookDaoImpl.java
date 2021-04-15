@@ -1,7 +1,5 @@
 package com.bitacademy.myportal.repository;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -28,8 +26,8 @@ public class GuestbookDaoImpl implements GuestbookDao {
 
 	@Override
 	public int insert(GuestbookVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int insertedCount = sqlSession.insert("guestbook.insert", vo);
+		return insertedCount;
 	}
 
 	@Override
