@@ -7,7 +7,7 @@
 	<!-- guestbook.selectAll로 호출
 		결과 데이터는 GuestbookVo로 반환 -->
 	<select id="selectAll" 
-		resultType="com.bitacademy.myportal.vo.GuestbookVo">
+		resultType="guestbookVo">
 	<![CDATA[
 	SELECT no, name, password, content, regdate as regDate
 	FROM guestbook
@@ -21,7 +21,7 @@
 	<!-- insert, update, delete는 결과로 영향을 받은 레코드의 수가 반환
 		resultType은 명시하지 않는다 -->
 	<insert id="insert" 
-		parameterType="com.bitacademy.myportal.vo.GuestbookVo">
+		parameterType="guestbookVo">
 	<![CDATA[
 	INSERT INTO guestbook (no, name, password, content)
 	VALUES(seq_guestbook_no.nextval,
@@ -33,7 +33,7 @@
 	
 	<!-- 게시물 삭제 쿼리 -->
 	<delete id="delete"
-		parameterType="com.bitacademy.myportal.vo.GuestbookVo">
+		parameterType="guestbookVo">
 	<![CDATA[
 	DELETE FROM guestbook
 	WHERE no = #{no} AND password = #{password}
