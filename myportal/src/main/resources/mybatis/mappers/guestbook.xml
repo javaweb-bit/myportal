@@ -3,4 +3,15 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace를 이용, 내부의 SQL 쿼리 객체를 실행 -->
 <mapper namespace="guestbook">
+	<!-- 전체 방명록 내용 불러오기 쿼리 -->
+	<!-- guestbook.selectAll로 호출
+		결과 데이터는 GuestbookVo로 반환 -->
+	<select id="selectAll" 
+		resultType="com.bitacademy.myportal.vo.GuestbookVo">
+	<![CDATA[
+	SELECT no, name, password, content, regdate as regDate
+	FROM guestbook
+	ORDER BY regdate DESC
+	]]>	
+	</select>
 </mapper>
