@@ -43,26 +43,27 @@ public class MainController {
 	//	ExceptionHandler v1
 	//	컨트롤러 내부의 예외 처리
 	//	내부에서 발생한 RuntimeException 예외를 처리하는 메서드
-	@ExceptionHandler(RuntimeException.class)
-	@ResponseBody
-	public String handleControllerExcept(RuntimeException e) {
-		return "Main Controller Exception:" + e.getMessage();
-	}
+//	@ExceptionHandler(RuntimeException.class)
+//	@ResponseBody
+//	public String handleControllerExcept(RuntimeException e) {
+//		return "Main Controller Exception:" + e.getMessage();
+//	}
 	
 	//	ExceptionHandler v2 
 	//	보다 구체적인 예외의 처리
-	@ExceptionHandler(ControllerException.class)
-	public String handleControllerExcept(ControllerException e, 
-			Model model) {
-		model.addAttribute("name", e.getClass().getSimpleName());
-		model.addAttribute("message", e.getMessage());
-		
-		//	예외 발생시 가급적
-		//	로그를 기록하고, 개발자나 관리자에게 고지
-//		에러 발생 당시의 요청 정보를 기록
-		System.err.println("예외발생시 요청 URL:" + e.getReq().getRequestURI());	
-		
-		return "error/exception";
-	}
+//	@ExceptionHandler(ControllerException.class)
+//	public String handleControllerExcept(ControllerException e, 
+//			Model model) {
+//		model.addAttribute("name", e.getClass().getSimpleName());
+//		model.addAttribute("message", e.getMessage());
+//		
+//		//	예외 발생시 가급적
+//		//	로그를 기록하고, 개발자나 관리자에게 고지
+////		에러 발생 당시의 요청 정보를 기록
+//		System.err.println("발생 예외:" + e.getClass().getSimpleName());
+//		System.err.println("예외발생시 요청 URL:" + e.getReq().getRequestURI());	
+//		
+//		return "error/exception";
+//	}
 	
 }
