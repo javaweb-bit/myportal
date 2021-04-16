@@ -4,8 +4,8 @@
 	prefix="c" %>    
 	<div id="navigation">
 		<ul>
-			<li><a href="<c:url value="/" />">Home</a></li>
-			<li><a href="<c:url value="/guestbook" />">방명록</a></li>
-			<li><a href="<c:url value="/board" />">게시판</a></li>
+			<li><a href="<c:url value="/" var="url" />">Home</a></li>
+			<li><a href="<c:url value="/guestbook" var="url" />">방명록</a></li>
+			<li><a href="<c:url value="/board" var="url" />">게시판</a></li>
 		</ul>
 	</div>
