@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +21,8 @@ import com.bitacademy.myportal.vo.MemberVo;
 @Controller
 @RequestMapping("/members")
 public class MemberController {
+	//	Logger
+	private static Logger logger = LoggerFactory.getLogger(MemberController.class);
 	//	서비스 연결
 	@Autowired
 	private MemberService memberService;
@@ -34,7 +38,8 @@ public class MemberController {
 	@RequestMapping(value="/join",
 			method=RequestMethod.POST)
 	public String joinAction(@ModelAttribute MemberVo memberVo) {
-		System.out.println("Form 전송된 데이터:" + memberVo);
+//		System.out.println("Form 전송된 데이터:" + memberVo);
+		logger.debug("Form 전송된 데이터:" + memberVo);
 		
 		boolean success = memberService.join(memberVo);
 		
