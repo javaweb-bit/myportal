@@ -24,3 +24,36 @@ function checkForm(frm) {
 	
 	return false;	//	onsubmit 이벤트에서 true여야 전송
 }
+
+function checkemail(emailField, url) {
+	console.log("email field:", emailField.value);
+	
+	//	Ajax 호출
+	if (emailField.value.trim().length == 0) {
+		alert("이메일을 입력해 주세요");
+		return;
+	}
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "json",
+		data: {
+			email: emailField.value.trim()
+		}, 
+		success: function(result) {
+			console.log("Result:", result);
+		},
+		error: function(xhr, status, error) {
+			console.error("Status:", status);
+			console.error("Response:", xhr);
+			console.error("Error:", error);
+		}		
+	});
+}
+
+
+
+
+
+
+

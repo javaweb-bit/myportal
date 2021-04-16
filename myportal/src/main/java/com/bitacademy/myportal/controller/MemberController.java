@@ -1,10 +1,15 @@
 package com.bitacademy.myportal.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitacademy.myportal.service.MemberService;
 import com.bitacademy.myportal.vo.MemberVo;
@@ -46,7 +51,29 @@ public class MemberController {
 		return "users/joinsuccess";
 	}
 	
+	//	JSON 매핑 확인
+	@ResponseBody	//	MessageConverter 작동
+	@RequestMapping("/show")
+	public Object showUserByEmail(@RequestParam String email) {
+		MemberVo vo = memberService.getUser(email);
+		return vo;
+	}
+	
 	//	중복 이메일 체크
-//	@RequestMapping("/emailcheck")
+	@ResponseBody
+	@RequestMapping("/emailcheck")
+	public Object existsEmail(
+			@RequestParam(value="email", required=false, defaultValue="") String email) {
+		MemberVo vo = memberService.getUser(email);
+		boolean exists = vo != null ? true: false;	//	vo 객체가 null -> 이미 존재하는 사용자
+		
+		//	결과 MAP -> 컨버터 -> JSON 변환
+		Map<String, Object> map = new HashMap<>();
+		map.put("result", "success");
+		map.put("data", exists);
+		
+		return map;
+	}
+	
 	
 }

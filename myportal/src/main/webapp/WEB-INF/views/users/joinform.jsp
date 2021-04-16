@@ -30,6 +30,7 @@
 		action="<c:url value="/members/join"/>"
 		method="POST"
 		>
+		<input type="hidden" name="check" value="f">
 		<input type="hidden" name="a" value="join">
 		
 		<label for="name">이름</label>
@@ -40,7 +41,13 @@
 	
 		<label for="email">이메일</label>
 		<input type="text" name="email" placeholder="이메일을 입력하십시오."><br>
-	
+		
+		<!-- 이메일 체크 버튼 -->
+		<input type="button" 
+			value="중복 체크" 
+			onclick="checkemail(this.form.email, '<c:url value="/members/emailcheck" />')" /><br>
+		
+		
 		<label for="gender">성별</label>
 		<input type="radio" name="gender" value="M" checked>남성</radio>
 		<input type="radio" name="gender" value="F">여성</radio><br>

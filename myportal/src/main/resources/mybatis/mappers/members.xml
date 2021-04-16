@@ -19,7 +19,7 @@
 	
 	<!-- 이메일 중복 체크용 SELECT -->
 	<select id="selectUserByEmail"
-		parameterType="string"
+		parameterType="String"
 		resultType="memberVo">
 	<![CDATA[
 	SELECT no, name, email, gender FROM members
