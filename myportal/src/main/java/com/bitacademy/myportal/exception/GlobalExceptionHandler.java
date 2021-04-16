@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
 	//	MemberDao 예외 처리 핸들러
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler(MemberDaoException.class)
-	public ModelAndView handleMemberDapException(MemberDaoException e) {
+	public ModelAndView handleMemberDaoException(MemberDaoException e) {
 		//	로그 기록
 		System.err.println("MemberDaoException:" + e.getMessage());
 		e.printStackTrace();	//	전체 예외 출력
