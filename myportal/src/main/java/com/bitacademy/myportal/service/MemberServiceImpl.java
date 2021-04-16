@@ -24,10 +24,11 @@ public class MemberServiceImpl implements MemberService {
 		return null;
 	}
 
+	//	이메일 중복 처리
 	@Override
 	public MemberVo getUser(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberVo vo = memberDao.selectUser(email);
+		return vo;
 	}
 
 }

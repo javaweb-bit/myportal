@@ -44,7 +44,8 @@
 		<label for="gender">성별</label>
 		<input type="radio" name="gender" value="M" checked>남성</radio>
 		<input type="radio" name="gender" value="F">여성</radio><br>
-		<input type="submit" value="전송"> 
+		<!-- input type="submit" value="전송" -->
+		<input type="button" value="폼 검증" onclick="checkForm(this.form)"> 
 	
 	</form>
 		

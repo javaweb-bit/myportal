@@ -11,16 +11,16 @@ import com.bitacademy.myportal.vo.MemberVo;
 public class MemberDaoImpl implements MemberDao {
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
 	public int insert(MemberVo vo) {
 		int insertedCount = 0;
-		
+
 		try {
 			insertedCount = sqlSession.insert("members.insert", vo);
 		} catch (Exception e) {
-			//	예외 전환
-			//	로그 출력
+			// 예외 전환
+			// 로그 출력
 			System.err.println("예외 발생:" + e.getMessage());
 			throw new MemberDaoException("회원 가입 중 오류 발생!", vo);
 		}
@@ -29,14 +29,15 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public MemberVo selectUser(String email, String password) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public MemberVo selectUser(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberVo vo = sqlSession.selectOne("members.selectUserByEmail");
+		
+		return vo;
 	}
 
 }

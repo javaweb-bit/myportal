@@ -16,4 +16,14 @@
 	)
 	]]>
 	</insert>
+	
+	<!-- 이메일 중복 체크용 SELECT -->
+	<select id="selectUserByEmail"
+		parameterType="string"
+		resultType="memberVo">
+	<![CDATA[
+	SELECT no, name, email, gender FROM members
+	WHERE email = #{value}
+	]]>	
+	</select>
 </mapper>
