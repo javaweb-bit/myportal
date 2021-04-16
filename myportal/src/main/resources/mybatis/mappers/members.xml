@@ -26,4 +26,16 @@
 	WHERE email = #{value}
 	]]>	
 	</select>
+	
+	<!-- 로그인용 SELECT -->
+	<select id="selectUserByEmailAndPassword"
+		parameterType="map"
+		resultType="memberVo">
+	<![CDATA[
+	SELECT no, name, password, email, gender, joindate
+	FROM members
+	WHERE email=#{email} AND password=#{password}
+	]]>
+	</select>
+
 </mapper>

@@ -20,8 +20,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVo getUser(String email, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberVo vo = memberDao.selectUser(email, password);
+		return vo;
 	}
 
 	//	이메일 중복 처리
