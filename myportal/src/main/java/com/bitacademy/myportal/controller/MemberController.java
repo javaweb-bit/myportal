@@ -105,5 +105,14 @@ public class MemberController {
 		
 	}
 	
+	//	로그아웃 처리
+	@RequestMapping("/logout")
+	public String logoutAction(HttpSession session) {
+		//	세션 지우기
+		session.removeAttribute("authUser");
+		//	세션 무효화
+		session.invalidate();
+		return "redirect:/";
+	}
 	
 }
