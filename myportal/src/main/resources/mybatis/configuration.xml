@@ -13,5 +13,7 @@
 	<mappers>
 		<!-- guestbook에 관련된 매퍼 설정 -->
 		<mapper resource="mybatis/mappers/guestbook.xml" />
+		<!-- member에 관련된 매퍼 설정 -->
+		<mapper resource="mybatis/mappers/members.xml" />
 	</mappers>
 </configuration>

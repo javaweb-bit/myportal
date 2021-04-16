@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>My Portal</title>
 <link rel="stylesheet"
-	href="<c:url value="/assets/css/home.css" />" />
+	href="<c:url value="/assets/css/user.css" />" />
 </head>
 <body>
 	<div id="container">
@@ -18,13 +18,14 @@
 			<div id="content">
 				<div id="site-introduction">
 				
-				
-				
-					<p>Spring으로 만든 홈페이지입니다</p>
-					
-					
-					
-					
+	<h1>회원 가입 성공</h1>
+	<p class="jr-success">
+		회원가입을 축하합니다.
+	</p>
+	<p>
+		<a href="<c:url value="/members/login"/>">로그인하기</a>
+	</p>
+
 				</div>
 			</div>
 		</div>

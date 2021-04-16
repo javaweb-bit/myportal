@@ -5,6 +5,6 @@
 	<div id="header">
 		<h1>MyPortal</h1>
 		<ul>
-
+			<li><a href="<c:url value="/members/join" />">회원가입</a></li>
 		</ul>
 	</div>
