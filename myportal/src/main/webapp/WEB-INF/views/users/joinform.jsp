@@ -28,7 +28,7 @@
 		id="join-form"
 		name="registerForm" 
 		action="<c:url value="/members/join"/>"
-		method="POST"
+		method="POST" onsubmit="return checkForm(this)"
 		>
 		<input type="hidden" name="check" value="f">
 		<input type="hidden" name="a" value="join">
@@ -51,8 +51,8 @@
 		<label for="gender">성별</label>
 		<input type="radio" name="gender" value="M" checked>남성</radio>
 		<input type="radio" name="gender" value="F">여성</radio><br>
-		<!-- input type="submit" value="전송" -->
-		<input type="button" value="폼 검증" onclick="checkForm(this.form)"> 
+		<input type="submit" value="전송">
+		<!--  input type="button" value="폼 검증" onclick="checkForm(this.form)" --> 
 	
 	</form>
 		
