@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Logback configuration -->
+<configuration>
+	<!-- Appender: 어디에, 어떤 로그를 기록할 것인지 설정 -->
+	<appender name="consoleAppender"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<charset>UTF-8</charset>
+			<!-- 기록할 로그의 포맷을 결정 -->
+			<Pattern>
+				%d{HH:mm:ss.SSS} %thread %-5level %logger{5} - %msg%n
+			</Pattern>
+		</encoder>	
+	</appender>
+	
+	<!-- 로그 기록 상황 -->
+	<!-- com.bitacademy.myporal 하위 패키지의 클래스의 DEBUG 이상 상황에서의 로그는
+	 -->
+	<logger name="com.bitacademy.myportal" level="DEBUG">
+		<!-- 로깅을 수행할 appender 지정 -->
+		<appender-ref ref="consoleAppender" />
+	</logger>
+</configuration>
