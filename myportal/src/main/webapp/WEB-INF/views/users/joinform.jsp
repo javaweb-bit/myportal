@@ -9,6 +9,10 @@
 <title>My Portal</title>
 <link rel="stylesheet"
 	href="<c:url value="/assets/css/user.css" />" />
+<!-- jQuery -->
+<script src="<c:url value="/assets/javascript/jquery/jquery-3.6.0.js"/>"></script>
+<!-- 스크립트 삽입 -->
+<script src="<c:url value="/assets/javascript/members.js"/>"></script>
 </head>
 <body>
 	<div id="container">
