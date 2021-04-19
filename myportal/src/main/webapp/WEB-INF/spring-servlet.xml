@@ -47,4 +47,17 @@
 			우선순위 지정 가능 -->
 		<property name="order" value="1" />
 	</bean>
+	
+	<!-- Interceptors -->
+	<mvc:interceptors>
+		<!-- 순서대로 적용된다 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/board/**" />
+			<bean class="com.bitacademy.myportal.interceptors.MyInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/board/**" />
+			<bean class="com.bitacademy.myportal.interceptors.MyInterceptor2" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>
