@@ -34,7 +34,7 @@ public class BoardController {
 		List<BoardVo> list = boardServiceImpl.getList();
 		//	모델에 실어서 View로 전달
 		model.addAttribute("list", list);
-		logger.debug("게시물 목록:", list);
+		logger.debug("게시물 목록:" + list);
 		
 		return "board/list";
 	}
