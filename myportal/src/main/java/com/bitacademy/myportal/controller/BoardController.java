@@ -46,7 +46,7 @@ public class BoardController {
 		//	로그인 여부 체크
 		if (authUser == null) {
 			//	로그인 안한 사용자
-			return "redirect:/";
+			return "redirect:/board";
 		}
 		//	로그인 한 사용자 -> 작성 폼으로 포워드
 		return "board/write";
