@@ -7,7 +7,7 @@ public class BoardVo {
 	private Long no; // PK
 	private String title;
 	private String content;
-	private Long number;
+	private Long hit;
 	private Date regDate;
 	private Long memberNo; // FK -> Member.no 참조
 	private String memberName;
@@ -36,12 +36,12 @@ public class BoardVo {
 		this.content = content;
 	}
 
-	public Long getNumber() {
-		return number;
+	public Long getHit() {
+		return hit;
 	}
 
-	public void setNumber(Long number) {
-		this.number = number;
+	public void setHit(Long hit) {
+		this.hit = hit;
 	}
 
 	public Date getRegDate() {
@@ -70,7 +70,7 @@ public class BoardVo {
 
 	@Override
 	public String toString() {
-		return "BoardVo [no=" + no + ", title=" + title + ", content=" + content + ", number=" + number + ", regDate="
+		return "BoardVo [no=" + no + ", title=" + title + ", content=" + content + ", hit=" + hit + ", regDate="
 				+ regDate + ", memberNo=" + memberNo + ", memberName=" + memberName + "]";
 	}
 }
