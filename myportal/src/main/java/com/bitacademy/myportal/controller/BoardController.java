@@ -94,5 +94,21 @@ public class BoardController {
 		model.addAttribute("vo", vo);
 		return "/board/modify";
 	}
+	
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String modifyAction(@ModelAttribute BoardVo updatedVo) {
+		//	기존 게시물 불러오기
+		BoardVo vo = boardServiceImpl.getContent(updatedVo.getNo());
+		//	변경된 내용 교체
+		vo.setTitle(updatedVo.getTitle());
+		vo.setContent(updatedVo.getContent());
+		
+		boolean success = boardServiceImpl.update(vo);
+		
+		logger.debug("게시물 업데이트:" + success);
+		
+		//	리스트로 리다이렉트
+		return "redirect:/board";
+	}
 
 }

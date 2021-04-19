@@ -42,6 +42,15 @@
 	]]>
 	</update>
 	
+	<!-- 게시물 Update 쿼리 -->
+	<update id="update" parameterType="boardVo">
+	<![CDATA[
+	UPDATE board
+	SET title=#{title}, content=#{content}
+	WHERE no = #{no}
+	]]>
+	</update>
+	
 </mapper>
 
 
