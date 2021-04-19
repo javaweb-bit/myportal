@@ -11,4 +11,10 @@
 	WHERE b.member_no = m.no
 	]]>
 	</select>
+	
+	<insert id="insert" parameterType="boardVo">
+	<![CDATA[
+	
+	]]>
+	</insert>
 </mapper>
