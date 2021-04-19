@@ -14,7 +14,36 @@
 	
 	<insert id="insert" parameterType="boardVo">
 	<![CDATA[
-	
+	INSERT INTO board
+	(no, title, content, member_no)
+	VALUES
+	(seq_board_pk.nextval, #{title}, #{content}, #{memberNo})
 	]]>
 	</insert>
+	
+	<!-- 게시물 보기 -->
+	<select id="getContent" parameterType="long" resultType="boardVo">
+	<![CDATA[
+	SELECT b.no, b.title, b.content, b.hit, b.reg_date as regDate,
+		b.member_no as memberNo,
+		m.name as memberName
+	FROM board b, members m
+	WHERE b.member_no = m.no AND
+		b.no = #{value}
+	]]>
+	</select>
+	
+	<!-- 게시물 hit 수 증가 쿼리 -->
+	<update id="increaseHitCount" parameterType="long">
+	<![CDATA[
+	UPDATE board
+	SET hit = hit + 1
+	WHERE no = #{value}	
+	]]>
+	</update>
+	
 </mapper>
+
+
+
+

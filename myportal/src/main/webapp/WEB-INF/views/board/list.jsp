@@ -33,7 +33,7 @@
 		<c:forEach items="${list }" var="vo">
 		<tr>
 			<td>${vo.no }</td>
-			<td><a href="">첫 번째 글입니다.</a></td>
+			<td><a href="<c:url value="/board/${vo.no }"/>">${vo.title }</a></td>
 			<td>${vo.memberName }</td>
 			<td>${vo.hit }</td>
 			<td>${vo.regDate }</td>

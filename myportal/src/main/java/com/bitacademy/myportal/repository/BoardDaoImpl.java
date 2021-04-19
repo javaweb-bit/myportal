@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bitacademy.myportal.vo.BoardVo;
 
@@ -22,14 +23,16 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public int insert(BoardVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int insertedCount = sqlSession.insert("board.insert", vo);
+		return insertedCount;
 	}
 
+	@Transactional
 	@Override
 	public BoardVo getContent(Long no) {
-		// TODO Auto-generated method stub
-		return null;
+		BoardVo vo = sqlSession.selectOne("board.getContent", no);
+		sqlSession.update("board.increaseHitCount", no);
+		return vo;
 	}
 
 	@Override

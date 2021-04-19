@@ -1,14 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>My Homepage</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<link href="/myportal/css/board.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>My Portal</title>
+<link rel="stylesheet" href="<c:url value="/assets/css/board.css" />" />
 </head>
 <body>
-	
+	<div id="container">
+		<jsp:include page="/WEB-INF/views/includes/header.jsp" />
+		<jsp:include page="/WEB-INF/views/includes/navigation.jsp" />
+		<div id="wapper">
+			<div id="content">
+				<div id="site-introduction">
+				
+				
 	<table border="1" width="640">
 		<tr>
 			<td colspan="2"><h3>게시판</h3></td>
@@ -18,25 +26,33 @@
 		</tr>
 		<tr>
 			<td>제목</td>
-			<td>제목입니다.</td>
+			<td>${ vo.title }</td>
 		</tr>
 		<tr>
 			<td>내용</td>
 			<td>
 				<div>
-					내용 1입니다.<br>
-					내용 2입니다.<br>
-					내용 3입니다.
+					${vo.content }
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<a href="">글목록</a>
-				<a href="">글수정</a>
+				<a href="<c:url value="/board"/>">글목록</a>
+				<!-- 작성자가 아니면 수정할 수 없게 -->
+				<c:if test="${not empty authUser }">
+					<c:if test="${authUser.no == vo.memberNo }">
+					<a href="<c:url value="/board/${vo.no }/modify" />">글수정</a>
+					</c:if>
+				</c:if>
 			</td>
 		</tr>
 	</table>
 
+				</div>
+			</div>
+		</div>
+		<jsp:include page="/WEB-INF/views/includes/footer.jsp" />
+	</div>
 </body>
 </html>

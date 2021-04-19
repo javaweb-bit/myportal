@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -48,6 +50,49 @@ public class BoardController {
 		}
 		//	로그인 한 사용자 -> 작성 폼으로 포워드
 		return "board/write";
+	}
+	
+	@RequestMapping(value="write", method=RequestMethod.POST)
+	public String writeAction(@ModelAttribute BoardVo vo, 
+			HttpSession session) {
+		MemberVo authUser = (MemberVo)session.getAttribute("authUser");
+		if (authUser == null) {
+			return "redirect:/board/write";
+		}
+		//	전달받은 BoardVo 객체에 현재 로그인 한 사용자의 PK를 삽입
+		vo.setMemberNo(authUser.getNo());
+		boolean success = boardServiceImpl.write(vo);
+		
+		logger.debug("게시물 등록 결과", success);
+		
+		if (success) {
+			return "redirect:/board";
+		} else {
+			return "redirect:/board/write";
+		}
+	}
+	
+	@RequestMapping("/{no}")
+	public String view(@PathVariable Long no, Model model) {
+		BoardVo vo = boardServiceImpl.getContent(no);
+		model.addAttribute("vo", vo);
+		return "board/view";
+	}
+	
+	@RequestMapping("/{no}/modify")
+	public String modifyForm(@PathVariable Long no, Model model, HttpSession session) {
+		//	기존 게시물 받아오기
+		BoardVo vo = boardServiceImpl.getContent(no);
+		MemberVo authUser = (MemberVo)session.getAttribute("authUser");
+		
+		if (authUser == null) {
+			return "redirect:/board";
+		} else if (authUser.getNo() != vo.getMemberNo()) {	//	게시물 작성자가 아니면
+			return "redirect:/board";
+		}
+		
+		model.addAttribute("vo", vo);
+		return "/board/modify";
 	}
 
 }

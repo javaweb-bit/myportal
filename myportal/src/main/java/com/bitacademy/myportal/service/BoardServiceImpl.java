@@ -22,14 +22,14 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean write(BoardVo vo) {
-		// TODO Auto-generated method stub
-		return false;
+		int insertedCount = boardDaoImpl.insert(vo);
+		return 1 == insertedCount;
 	}
 
 	@Override
 	public BoardVo getContent(Long no) {
-		// TODO Auto-generated method stub
-		return null;
+		BoardVo vo = boardDaoImpl.getContent(no);
+		return vo;
 	}
 
 	@Override
