@@ -51,13 +51,24 @@
 	<!-- Interceptors -->
 	<mvc:interceptors>
 		<!-- 순서대로 적용된다 -->
-		<mvc:interceptor>
+		<!-- mvc:interceptor>
 			<mvc:mapping path="/board/**" />
 			<bean class="com.bitacademy.myportal.interceptors.MyInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/board/**" />
 			<bean class="com.bitacademy.myportal.interceptors.MyInterceptor2" />
+		</mvc:interceptor -->
+		<!-- 인증 처리: 인터셉터 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/board/**" />
+			<!-- 아래 매핑은 인터셉터 적용에서 제외 -->
+			<mvc:exclude-mapping path="/board/list/**"/> 
+			<mvc:exclude-mapping path="/board/" />
+			<mvc:exclude-mapping path="/board" />
+			<bean class="com.bitacademy.myportal.interceptors.AuthInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	
 </beans>
