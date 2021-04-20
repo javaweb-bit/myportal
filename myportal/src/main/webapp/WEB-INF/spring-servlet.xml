@@ -70,5 +70,11 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
-	
+	<!-- MessageSource -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<!-- 메시지 소스의 위치 -->
+		<property name="basenames" value="messages/messages_ko" />	
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
 </beans>
