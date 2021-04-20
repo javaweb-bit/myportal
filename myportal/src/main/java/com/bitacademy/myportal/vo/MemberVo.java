@@ -2,12 +2,28 @@ package com.bitacademy.myportal.vo;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.Email;
+//import javax.validation.constraints.Email;
+//import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class MemberVo {
 	// 필드
 	private Long no;
+	
+	@NotEmpty	//	name 필드는 null이 아니어야 하고
+	@Length(min=2, max=8)		//	길이가 2글자 ~ 8글자
 	private String name;
+	
+	@NotEmpty	//	email 필드는 null이 아니어야 하고
+	@Email		//	이메일 형식이어야 한다
 	private String email;
+	
+	@NotEmpty	//	password 필드는 null이 아니어야 하고
+	@Length(min=4, max=20)	//	길이가 4 ~ 20글자여야 한다
 	private String password;
+	
 	private String gender;
 	private Date joindate;
 	

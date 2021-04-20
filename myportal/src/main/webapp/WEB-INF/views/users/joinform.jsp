@@ -28,7 +28,7 @@
 		id="join-form"
 		name="registerForm" 
 		action="<c:url value="/members/join"/>"
-		method="POST" onsubmit="return checkForm(this)"
+		method="POST"
 		>
 		<input type="hidden" name="check" value="f">
 		<input type="hidden" name="a" value="join">

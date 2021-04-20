@@ -1,14 +1,18 @@
 package com.bitacademy.myportal.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,9 +39,19 @@ public class MemberController {
 
 	// 가입 처리
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinAction(@ModelAttribute MemberVo memberVo) {
+	public String joinAction(
+			@ModelAttribute @Valid MemberVo memberVo, //	폼 검증 @Valid
+			BindingResult result) {	//	검증 결과 객체
 		logger.debug("Form 전송된 데이터:" + memberVo);
 
+		//	폼 검증 결과 확인
+		if (result.hasErrors()) {	//	폼 검증에 에러 발견
+			List<ObjectError> errors = result.getAllErrors();
+			for (ObjectError e: errors) {
+				logger.error("Valid Error:" + e);
+			}
+			return "users/joinform";
+		}
 		boolean success = memberService.join(memberVo);
 
 		if (success) { // insert 성공
