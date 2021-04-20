@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" 
 	prefix="c" %>        
 <!DOCTYPE html>
@@ -36,16 +35,7 @@
 		
 		<label for="name">이름</label>
 		<input name="name" type="text" placeholder="이름을 입력하십시오"><br>
-		<!-- 이름 필드의 에러메시지 확인 후 출력 -->
-		<spring:hasBindErrors name="memberVo">
-			<!-- name 필드에 검증 오류가 있다면 -->
-			<c:if test="${ errors.hasFieldErrors('name') }">
-				<strong style="color:red">
-				<spring:message code="${errors.getFieldError('name').codes[0] }"
-					text="${errors.getFieldError('name').defaultMessage }" />
-				</strong><br/>
-			</c:if>
-		</spring:hasBindErrors>
+	
 		<label for="password">비밀번호</label>
 		<input name="password" type="password" placeholder="비밀번호를 입력하십시오"><br>
 	

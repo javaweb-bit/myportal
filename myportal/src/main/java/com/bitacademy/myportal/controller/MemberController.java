@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,7 +34,7 @@ public class MemberController {
 
 	// 가입 폼
 	@RequestMapping(value = { "", "/", "/join" }, method = RequestMethod.GET)
-	public String join() {
+	public String join(@ModelAttribute MemberVo memberVo) {
 		return "users/joinform";
 	}
 
@@ -41,7 +42,9 @@ public class MemberController {
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinAction(
 			@ModelAttribute @Valid MemberVo memberVo, //	폼 검증 @Valid
-			BindingResult result) {	//	검증 결과 객체
+			BindingResult result,	//	검증 결과 객체
+			Model model	//	View에 전달할 데이터 객체
+			) {	
 		logger.debug("Form 전송된 데이터:" + memberVo);
 
 		//	폼 검증 결과 확인
@@ -50,6 +53,8 @@ public class MemberController {
 			for (ObjectError e: errors) {
 				logger.error("Valid Error:" + e);
 			}
+			logger.debug("result:" + result.getModel());
+			model.addAllAttributes(result.getModel());
 			return "users/joinform";
 		}
 		boolean success = memberService.join(memberVo);
