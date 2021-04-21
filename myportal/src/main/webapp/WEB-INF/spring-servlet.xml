@@ -87,4 +87,8 @@
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 	
+	<!-- Resource Mapping:
+		요청 url과 실제 디렉터리를 매핑(연결) -->
+	<mvc:resources mapping="/upload-images/**"
+		location="file:e:/upload/" />
 </beans>
